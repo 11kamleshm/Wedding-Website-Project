@@ -1,0 +1,15 @@
+apiVersion : v1
+kind : Deployment
+metadata :
+  name : Wedding-Site
+spec :
+  replicas : 1
+  selector : 
+   matchlables :
+     app : website 
+  spec:
+    containers:
+      - name : website
+        image : kamlesh021/website:v1
+        ports :
+          containerPort : 80
