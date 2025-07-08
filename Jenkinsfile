@@ -16,7 +16,7 @@ pipeline {
 
         stage("Push to Dockerfile") {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'dockerhub-cred', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                     sh """
                         docker login -u $USER -p $PASS
                         docker push kamlesh021/website:v1
