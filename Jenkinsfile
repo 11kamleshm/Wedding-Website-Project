@@ -19,7 +19,7 @@ pipeline {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                     sh """
                         docker login -u $USER -p $PASS
-                        docker push kamlesh021/website:v1
+                        docker push kamlesh021/website:v1 
                     """
                 }
             }
