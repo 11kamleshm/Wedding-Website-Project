@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+     KUBECONFIG = "/var/lib/jenkins/.kube/config"
+    }
     stages {
         stage("Clone") {
             steps {
@@ -26,11 +28,9 @@ pipeline {
         }
 
         stage("Deploy to Kubernetes") {
-            steps {
-                withEnv(["KUBECONFIG=/var/lib/jenkins/.kube/config"]) {
+            steps {                
                 sh 'kubectl apply -f website-deply.yaml'
                 sh 'kubectl apply -f website-service.yaml'
-            }
         }
     }
 }
