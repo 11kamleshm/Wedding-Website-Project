@@ -1,15 +1,19 @@
-apiVersion : apps/v1
-kind : Deployment
-metadata :
-  name : Wedding-Site
-spec :
-  replicas : 1
-  selector : 
-   matchlables :
-     app : website 
-  spec:
-    containers:
-      - name : website
-        image : kamlesh021/website:v1
-        ports :
-          containerPort : 80
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Wedding-Site
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: website # 'matchLabels' is correct now
+  template:        # 'template' field added
+    metadata:
+      labels:
+        app: website
+    spec:          # This 'spec' is for the Pod, nested under 'template'
+      containers:
+      - name: website
+        image: kamlesh021/website:v1
+        ports:
+        - containerPort: 80
