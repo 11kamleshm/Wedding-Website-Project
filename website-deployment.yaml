@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind : Deployment
+metadata:
+  name : website-Deployment
+spec:
+  replicas :1
+  selector : 
+    matchlabels:
+      app : website
+  template:
+    metadata:
+      labels:
+        app : website
+  spec :
+    containers :
+      - name : website
+        image: kamlesh021/website:latest
+        ports : 
+          - containers : 80
